@@ -16,17 +16,17 @@
             <input type="file" id="uploadPdf" accept=".pdf">
         </div>
         <div id="view" style="display:none;">
-            <button id="back-button">Back</button>
-            <iframe id="pdf-display" src="" style="width:100%; height:90vh; border:1px solid #ccc;"></iframe>
+            <button id="backButton">Back</button>
+            <iframe id="pdfDisplay" src="" style="width:100%; height:90vh; border:1px solid #ccc;"></iframe>
         </div>
     </div>
     <script>
         const container = document.getElementById("container")
         const home = document.getElementById('home');
         const view = document.getElementById('view');
-        const backButton = document.getElementById('back-button');
+        const backButton = document.getElementById('backButton');
         const pdfFile = document.getElementById('uploadPdf');
-        const pdfDisplay = document.getElementById('pdf-display');
+        const pdfDisplay = document.getElementById('pdfDisplay');
 
         pdfFile.addEventListener('change', () => {
             const file = pdfFile.files[0];
