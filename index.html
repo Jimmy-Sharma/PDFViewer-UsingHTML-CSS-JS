@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>PDF Viewer</title>
+    <link rel="stylesheet" href="index.css">
+    <link rel="shortcut icon" href="./assets/file.png" type="image/x-icon">
+</head>
+
+<body>
+    <div id="container">
+        <div id="home">
+            <h1>Upload your PDF</h1>
+            <input type="file" id="uploadPdf" accept=".pdf">
+        </div>
+        <div id="view" style="display:none;">
+            <button id="back-button">Back</button>
+            <iframe id="pdf-display" src="" style="width:100%; height:90vh; border:1px solid #ccc;"></iframe>
+        </div>
+    </div>
+    <script>
+        const container = document.getElementById("container")
+        const home = document.getElementById('home');
+        const view = document.getElementById('view');
+        const backButton = document.getElementById('back-button');
+        const pdfFile = document.getElementById('uploadPdf');
+        const pdfDisplay = document.getElementById('pdf-display');
+
+        pdfFile.addEventListener('change', () => {
+            const file = pdfFile.files[0];
+            const fileReader = new FileReader();
+
+            fileReader.onload = () => {
+                const url = fileReader.result;
+                displayPdf(url);
+                showView();
+            };
+
+            fileReader.readAsDataURL(file);
+        });
+
+        backButton.addEventListener('click', () => {
+            hideView();
+        });
+
+        function displayPdf(url) {
+            pdfDisplay.src = url;
+        }
+
+        function showView() {
+            container.style.paddingTop='10px'
+            home.style.display = 'none';
+            view.style.display = 'grid';
+        }
+
+        function hideView() {
+            container.style.paddingTop='50px'
+            home.style.display = 'grid';
+            view.style.display = 'none';
+        }
+    </script>
+</body>
+
+</html>
